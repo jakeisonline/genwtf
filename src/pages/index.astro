@@ -1,11 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import GenBlock from "../components/GenBlock.astro"
+import GenTableHeading from "../components/GenTableHeading.astro"
+
+// Configure your year range
+const startYear = 1910
+const endYear = 2040 // Extended to show more years
+const years = Array.from(
+  { length: endYear - startYear + 1 },
+  (_, i) => startYear + i,
+)
 ---
 
 <Layout>
   <h1
-    class="text-foreground mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl"
+    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-foreground md:text-5xl lg:text-6xl"
   >
-    Just how old are they?
+    They're how old?!
   </h1>
+  <div class="relative w-[max-content] overflow-x-auto">
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <GenTableHeading class="w-[200px]" />
+          {years.map((year) => <GenTableHeading>{year}</GenTableHeading>)}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sticky left-0 z-10 bg-background/95">Generation 1</td>
+          <td></td>
+          <GenBlock colspan={2} />
+        </tr>
+        <tr>
+          <td class="sticky left-0 z-10 bg-background/95">Generation 2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <GenBlock colspan={2} />
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </Layout>
