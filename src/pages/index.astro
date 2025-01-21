@@ -4,12 +4,55 @@ import GenBlock from "../components/GenBlock.astro"
 import GenTableHeading from "../components/GenTableHeading.astro"
 
 // Configure your year range
-const startYear = 1910
+const startYear = 1922
 const endYear = 2040 // Extended to show more years
 const years = Array.from(
   { length: endYear - startYear + 1 },
   (_, i) => startYear + i,
 )
+
+const generations = [
+  {
+    name: "The Greatest Generation",
+    start: 1922,
+    end: 1927,
+  },
+  {
+    name: "The Silent Generation",
+    start: 1928,
+    end: 1945,
+  },
+  {
+    name: "The Baby Boomers",
+    start: 1946,
+    end: 1964,
+  },
+  {
+    name: "Generation X",
+    start: 1965,
+    end: 1980,
+  },
+  {
+    name: "Millennials",
+    start: 1981,
+    end: 1996,
+  },
+  {
+    name: "Generation Z",
+    start: 1997,
+    end: 2012,
+  },
+  {
+    name: "Generation Alpha",
+    start: 2013,
+    end: 2022,
+  },
+  {
+    name: "Generation Beta",
+    start: 2023,
+    end: 2039,
+  },
+]
 ---
 
 <Layout>
@@ -18,27 +61,29 @@ const years = Array.from(
   >
     They're how old?!
   </h1>
-  <div class="relative w-[max-content] overflow-x-auto">
-    <table class="table-auto">
+  <div class="relative overflow-x-scroll">
+    <table class="ml-8 table-auto cursor-grab">
       <thead>
         <tr>
-          <GenTableHeading class="w-[200px]" />
           {years.map((year) => <GenTableHeading>{year}</GenTableHeading>)}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="sticky left-0 z-10 bg-background/95">Generation 1</td>
-          <td></td>
-          <GenBlock colspan={2} />
-        </tr>
-        <tr>
-          <td class="sticky left-0 z-10 bg-background/95">Generation 2</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <GenBlock colspan={2} />
-        </tr>
+        {
+          generations
+            .slice()
+            .map((generation, index) => {
+              const startColspan = generation.start - startYear
+              const genColspan = generation.end - generation.start + 1
+              return (
+                <tr class="h-10">
+                  {index !== 0 && <td colspan={startColspan} />}
+                  <GenBlock colspan={genColspan} />
+                </tr>
+              )
+            })
+            .reverse()
+        }
       </tbody>
     </table>
   </div>

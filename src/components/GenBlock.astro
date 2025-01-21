@@ -4,7 +4,6 @@ import { cn } from "../lib/utils"
 const { generation, colspan, class: className } = Astro.props
 ---
 
-<td
-  class={cn("h-[20px] w-[100px] rounded-full bg-pink-500", className)}
-  colspan={colspan}>{generation}</td
+<td class={cn("h-[20px] rounded-full bg-pink-500", className)} colspan={colspan}
+  >{generation}</td
 >
