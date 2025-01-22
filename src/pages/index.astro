@@ -5,7 +5,7 @@ import GenGridHeading from "../components/GenGridHeading.astro"
 
 // Configure your year range
 const startYear = 1922
-const endYear = 2040 // Extended to show more years
+const endYear = 2039 // Extended to show more years
 const years = Array.from(
   { length: endYear - startYear + 1 },
   (_, i) => startYear + i,
@@ -69,6 +69,9 @@ const generations = [
     colorStop: "#D8ECD8", // Lighter Pastel Mint
   },
 ]
+
+const gridTemplateColumns = `repeat(${years.length}, minmax(100px, 1fr))`
+const gridTemplateRows = `repeat(${generations.length}, minmax(20px, 1fr))`
 ---
 
 <Layout>
@@ -97,14 +100,14 @@ const generations = [
     <div class="relative ml-6 grid h-max">
       <div
         class="absolute ml-3 grid h-full w-max text-left"
-        style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr));`
+        style={`grid-template-columns: ${gridTemplateColumns};`}
       >
         {years.map((year) => <GenGridHeading>{year}</GenGridHeading>)}
       </div>
 
       <div
         class="absolute -z-10 mt-16 grid w-max gap-y-8"
-        style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr)); grid-template-rows: repeat(${generations.length}, minmax(20px, 1fr));`
+        style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
       >
         {
           generations.map((generation) => (
@@ -115,7 +118,7 @@ const generations = [
 
       <div
         class="mt-8 grid w-max"
-        style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr)); grid-template-rows: repeat(${generations.length}, minmax(20px, 1fr));`
+        style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
       >
         {
           generations
