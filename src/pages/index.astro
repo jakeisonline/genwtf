@@ -78,24 +78,32 @@ const generations = [
     They're how old?!
   </h1>
   <div class="relative overflow-x-scroll">
-    <div class="sticky left-6 top-12 ml-6 flex h-0 flex-col gap-12 text-left">
+    <div
+      class="sticky left-9 top-10 z-10 ml-9 flex h-0 flex-col gap-12 text-left"
+    >
       {
         generations
-          .map((generation) => <div class="">{generation.name}</div>)
+          .map((generation) => (
+            <div class="">
+              {generation.name}
+              <span class="text-xs text-gray-500">
+                {generation.start} - {generation.end}
+              </span>
+            </div>
+          ))
           .reverse()
       }
     </div>
-
-    <div class="ml-6 grid">
+    <div class="relative ml-6 grid h-max">
       <div
-        class="grid w-max text-left"
+        class="absolute ml-3 grid h-full w-max text-left"
         style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr));`
       >
         {years.map((year) => <GenGridHeading>{year}</GenGridHeading>)}
       </div>
 
       <div
-        class="mt-4 grid w-max"
+        class="mt-8 grid w-max"
         style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr)); grid-template-rows: repeat(${generations.length}, minmax(20px, 1fr));`
       >
         {
