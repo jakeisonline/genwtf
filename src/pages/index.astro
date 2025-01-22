@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import GenBlock from "../components/GenBlock.astro"
-import GenTableHeading from "../components/GenTableHeading.astro"
+import GenGridBlock from "../components/GenGridBlock.astro"
+import GenGridHeading from "../components/GenGridHeading.astro"
 
 // Configure your year range
 const startYear = 1922
@@ -16,41 +16,57 @@ const generations = [
     name: "The Greatest Generation",
     start: 1922,
     end: 1927,
+    colorStart: "#A3B9D3", // Pastel Navy Blue
+    colorStop: "#B0C4DE", // Lighter Pastel Blue
   },
   {
     name: "The Silent Generation",
     start: 1928,
     end: 1945,
+    colorStart: "#C08081", // Pastel Burgundy
+    colorStop: "#D3A4A6", // Lighter Pastel Pink
   },
   {
     name: "The Baby Boomers",
     start: 1946,
     end: 1964,
+    colorStart: "#A8D5BA", // Pastel Forest Green
+    colorStop: "#C1E1C1", // Lighter Pastel Green
   },
   {
     name: "Generation X",
     start: 1965,
     end: 1980,
+    colorStart: "#B0C4DE", // Pastel Slate Grey
+    colorStop: "#D3D3E3", // Lighter Pastel Grey
   },
   {
     name: "Millennials",
     start: 1981,
     end: 1996,
+    colorStart: "#FFDAB9", // Pastel Bright Orange
+    colorStop: "#FFE4C4", // Lighter Pastel Peach
   },
   {
     name: "Generation Z",
     start: 1997,
     end: 2012,
+    colorStart: "#D1B3FF", // Pastel Electric Purple
+    colorStop: "#E6CCFF", // Lighter Pastel Lavender
   },
   {
     name: "Generation Alpha",
     start: 2013,
     end: 2022,
+    colorStart: "#B3FFFF", // Pastel Aqua Blue
+    colorStop: "#CCFFFF", // Lighter Pastel Cyan
   },
   {
     name: "Generation Beta",
     start: 2023,
     end: 2039,
+    colorStart: "#C1E1C1", // Pastel Lime Green
+    colorStop: "#D8ECD8", // Lighter Pastel Mint
   },
 ]
 ---
@@ -62,29 +78,44 @@ const generations = [
     They're how old?!
   </h1>
   <div class="relative overflow-x-scroll">
-    <table class="ml-8 table-auto cursor-grab">
-      <thead>
-        <tr>
-          {years.map((year) => <GenTableHeading>{year}</GenTableHeading>)}
-        </tr>
-      </thead>
-      <tbody>
+    <div class="sticky left-6 top-12 ml-6 flex h-0 flex-col gap-12 text-left">
+      {
+        generations
+          .map((generation) => <div class="">{generation.name}</div>)
+          .reverse()
+      }
+    </div>
+
+    <div class="ml-6 grid">
+      <div
+        class="grid w-max text-left"
+        style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr));`
+      >
+        {years.map((year) => <GenGridHeading>{year}</GenGridHeading>)}
+      </div>
+
+      <div
+        class="mt-4 grid w-max"
+        style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr)); grid-template-rows: repeat(${generations.length}, minmax(20px, 1fr));`
+      >
         {
           generations
             .slice()
+            .reverse()
             .map((generation, index) => {
               const startColspan = generation.start - startYear
               const genColspan = generation.end - generation.start + 1
               return (
-                <tr class="h-10">
-                  {index !== 0 && <td colspan={startColspan} />}
-                  <GenBlock colspan={genColspan} />
-                </tr>
+                <GenGridBlock
+                  generation={generation}
+                  rowStart={index + 1}
+                  colStart={startColspan + 1}
+                  colSpan={genColspan}
+                />
               )
             })
-            .reverse()
         }
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
 </Layout>
