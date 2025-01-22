@@ -103,6 +103,17 @@ const generations = [
       </div>
 
       <div
+        class="absolute -z-10 mt-16 grid w-max gap-y-8"
+        style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr)); grid-template-rows: repeat(${generations.length}, minmax(20px, 1fr));`
+      >
+        {
+          generations.map((generation) => (
+            <div class="col-span-full h-10 rounded-full bg-gray-200/80" />
+          ))
+        }
+      </div>
+
+      <div
         class="mt-8 grid w-max"
         style=`grid-template-columns: repeat(${years.length}, minmax(100px, 1fr)); grid-template-rows: repeat(${generations.length}, minmax(20px, 1fr));`
       >
