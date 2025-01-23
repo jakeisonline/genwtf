@@ -1,0 +1,24 @@
+---
+import type { Generation } from "../lib/types"
+
+interface Props {
+  generations: Generation[]
+}
+
+const { generations }: Props = Astro.props
+---
+
+<div class="sticky left-9 top-10 z-10 ml-9 flex h-0 flex-col gap-12 text-left">
+  {
+    generations
+      .map((generation) => (
+        <div class="">
+          {generation.name}
+          <span class="text-xs text-gray-500">
+            {generation.start} - {generation.end}
+          </span>
+        </div>
+      ))
+      .reverse()
+  }
+</div>

@@ -1,0 +1,23 @@
+---
+import type { Generation } from "../lib/types"
+
+interface Props {
+  gridTemplateColumns: string
+  gridTemplateRows: string
+  generations: Generation[]
+}
+
+const { gridTemplateColumns, gridTemplateRows, generations }: Props =
+  Astro.props
+---
+
+<div
+  class="absolute -z-10 mt-16 grid w-max gap-y-8"
+  style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
+>
+  {
+    generations.map((generation) => (
+      <div class="col-span-full h-10 rounded-full bg-gray-200/80" />
+    ))
+  }
+</div>

@@ -1,77 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import GenGridBlock from "../components/GenGridBlock.astro"
-import GenGridHeading from "../components/GenGridHeading.astro"
+import GenBarRailLabels from "../components/GenBarRailLabels.astro"
+import GenGridHeader from "../components/GenGridHeader.astro"
+import GenBarRails from "../components/GenBarRails.astro"
+import GenBars from "../components/GenBars.astro"
+import {
+  GENERATIONS,
+  START_YEAR,
+  END_YEAR,
+  GRID_TEMPLATE_COLUMNS,
+  GRID_TEMPLATE_ROWS,
+} from "../lib/const"
 
-// Configure your year range
-const startYear = 1922
-const endYear = 2039 // Extended to show more years
 const years = Array.from(
-  { length: endYear - startYear + 1 },
-  (_, i) => startYear + i,
+  { length: END_YEAR - START_YEAR + 1 },
+  (_, i) => START_YEAR + i,
 )
-
-const generations = [
-  {
-    name: "The Greatest Generation",
-    start: 1922,
-    end: 1927,
-    colorStart: "#A3B9D3", // Pastel Navy Blue
-    colorStop: "#B0C4DE", // Lighter Pastel Blue
-  },
-  {
-    name: "The Silent Generation",
-    start: 1928,
-    end: 1945,
-    colorStart: "#C08081", // Pastel Burgundy
-    colorStop: "#D3A4A6", // Lighter Pastel Pink
-  },
-  {
-    name: "The Baby Boomers",
-    start: 1946,
-    end: 1964,
-    colorStart: "#A8D5BA", // Pastel Forest Green
-    colorStop: "#C1E1C1", // Lighter Pastel Green
-  },
-  {
-    name: "Generation X",
-    start: 1965,
-    end: 1980,
-    colorStart: "#B0C4DE", // Pastel Slate Grey
-    colorStop: "#D3D3E3", // Lighter Pastel Grey
-  },
-  {
-    name: "Millennials",
-    start: 1981,
-    end: 1996,
-    colorStart: "#FFDAB9", // Pastel Bright Orange
-    colorStop: "#FFE4C4", // Lighter Pastel Peach
-  },
-  {
-    name: "Generation Z",
-    start: 1997,
-    end: 2012,
-    colorStart: "#D1B3FF", // Pastel Electric Purple
-    colorStop: "#E6CCFF", // Lighter Pastel Lavender
-  },
-  {
-    name: "Generation Alpha",
-    start: 2013,
-    end: 2022,
-    colorStart: "#B3FFFF", // Pastel Aqua Blue
-    colorStop: "#CCFFFF", // Lighter Pastel Cyan
-  },
-  {
-    name: "Generation Beta",
-    start: 2023,
-    end: 2039,
-    colorStart: "#C1E1C1", // Pastel Lime Green
-    colorStop: "#D8ECD8", // Lighter Pastel Mint
-  },
-]
-
-const gridTemplateColumns = `repeat(${years.length}, minmax(100px, 1fr))`
-const gridTemplateRows = `repeat(${generations.length}, minmax(20px, 1fr))`
 ---
 
 <Layout>
@@ -81,67 +25,23 @@ const gridTemplateRows = `repeat(${generations.length}, minmax(20px, 1fr))`
     They're how old?!
   </h1>
   <div class="relative overflow-x-scroll">
-    <div
-      class="sticky left-9 top-10 z-10 ml-9 flex h-0 flex-col gap-12 text-left"
-    >
-      {
-        generations
-          .map((generation) => (
-            <div class="">
-              {generation.name}
-              <span class="text-xs text-gray-500">
-                {generation.start} - {generation.end}
-              </span>
-            </div>
-          ))
-          .reverse()
-      }
-    </div>
+    <GenBarRailLabels generations={GENERATIONS} />
     <div class="relative ml-6 grid h-max">
-      <div
-        class="absolute ml-3 grid h-full w-max text-left"
-        style={`grid-template-columns: ${gridTemplateColumns};`}
-      >
-        {
-          years.map((year) => (
-            <GenGridHeading data-year={year}>{year}</GenGridHeading>
-          ))
-        }
-      </div>
-
-      <div
-        class="absolute -z-10 mt-16 grid w-max gap-y-8"
-        style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
-      >
-        {
-          generations.map((generation) => (
-            <div class="col-span-full h-10 rounded-full bg-gray-200/80" />
-          ))
-        }
-      </div>
-
-      <div
-        class="mt-8 grid w-max"
-        style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
-      >
-        {
-          generations
-            .slice()
-            .reverse()
-            .map((generation, index) => {
-              const startColspan = generation.start - startYear
-              const genColspan = generation.end - generation.start + 1
-              return (
-                <GenGridBlock
-                  generation={generation}
-                  rowStart={index + 1}
-                  colStart={startColspan + 1}
-                  colSpan={genColspan}
-                />
-              )
-            })
-        }
-      </div>
+      <GenGridHeader
+        gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
+        years={years}
+      />
+      <GenBarRails
+        gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
+        gridTemplateRows={GRID_TEMPLATE_ROWS}
+        generations={GENERATIONS}
+      />
+      <GenBars
+        gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
+        gridTemplateRows={GRID_TEMPLATE_ROWS}
+        generations={GENERATIONS}
+        startYear={START_YEAR}
+      />
     </div>
   </div>
 </Layout>

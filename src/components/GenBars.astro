@@ -1,0 +1,37 @@
+---
+import type { Generation } from "../lib/types"
+import GenGridBlock from "./GenGridBlock.astro"
+
+interface Props {
+  gridTemplateColumns: string
+  gridTemplateRows: string
+  generations: Generation[]
+  startYear: number
+}
+
+const { gridTemplateColumns, gridTemplateRows, generations, startYear }: Props =
+  Astro.props
+---
+
+<div
+  class="mt-8 grid w-max"
+  style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
+>
+  {
+    generations
+      .slice()
+      .reverse()
+      .map((generation, index) => {
+        const startColspan = generation.start - startYear
+        const genColspan = generation.end - generation.start + 1
+        return (
+          <GenGridBlock
+            generation={generation}
+            rowStart={index + 1}
+            colStart={startColspan + 1}
+            colSpan={genColspan}
+          />
+        )
+      })
+  }
+</div>

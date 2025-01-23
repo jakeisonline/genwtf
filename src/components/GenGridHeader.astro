@@ -1,0 +1,21 @@
+---
+import GenGridHeading from "./GenGridHeading.astro"
+
+interface Props {
+  gridTemplateColumns: string
+  years: number[]
+}
+
+const { gridTemplateColumns, years }: Props = Astro.props
+---
+
+<div
+  class="absolute ml-3 grid h-full w-max text-left"
+  style={`grid-template-columns: ${gridTemplateColumns};`}
+>
+  {
+    years.map((year) => (
+      <GenGridHeading data-year={year}>{year}</GenGridHeading>
+    ))
+  }
+</div>
