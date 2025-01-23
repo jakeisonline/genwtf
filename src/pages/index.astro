@@ -1,16 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import GenBarRailLabels from "../components/GenBarRailLabels.astro"
-import GenGridHeader from "../components/GenGridHeader.astro"
-import GenBarRails from "../components/GenBarRails.astro"
-import GenBars from "../components/GenBars.astro"
+import Layout from "@/layouts/Layout.astro"
+import GenBarRailLabels from "@/components/GenBarRailLabels.astro"
+import GenGridHeader from "@/components/GenGridHeader.astro"
+import GenBarRails from "@/components/GenBarRails.astro"
+import GenBars from "@/components/GenBars.astro"
 import {
   GENERATIONS,
   START_YEAR,
   END_YEAR,
   GRID_TEMPLATE_COLUMNS,
   GRID_TEMPLATE_ROWS,
-} from "../lib/const"
+} from "@/lib/const"
 
 const years = Array.from(
   { length: END_YEAR - START_YEAR + 1 },
