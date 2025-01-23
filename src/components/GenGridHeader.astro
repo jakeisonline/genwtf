@@ -10,12 +10,14 @@ const { gridTemplateColumns, years }: Props = Astro.props
 ---
 
 <div
-  class="absolute ml-3 grid h-full w-max text-left"
+  class="grid-container ml-3 grid h-full w-max text-left after:absolute"
   style={`grid-template-columns: ${gridTemplateColumns};`}
 >
   {
     years.map((year) => (
-      <GenGridHeading data-year={year}>{year}</GenGridHeading>
+      <GenGridHeading class="grid-item" data-year={year}>
+        {year}
+      </GenGridHeading>
     ))
   }
 </div>

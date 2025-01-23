@@ -1,0 +1,29 @@
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".grid-container") // Adjust the selector as needed
+    const items = container.querySelectorAll(".grid-item")
+    const visibleItems = new Set()
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleItems.add(entry.target.textContent)
+          } else {
+            visibleItems.delete(entry.target.textContent)
+          }
+          const event = new CustomEvent("itemsVisible", {
+            detail: { items: Array.from(visibleItems) },
+          })
+          window.dispatchEvent(event)
+        })
+      },
+      {
+        root: container,
+        threshold: 0.1, // Adjust this threshold as needed
+      },
+    )
+
+    items.forEach((item) => observer.observe(item))
+  })
+</script>

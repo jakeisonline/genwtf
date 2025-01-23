@@ -1,9 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import GenSelector from "@/components/GenSelector.tsx"
 import GenBarRailLabels from "@/components/GenBarRailLabels.astro"
 import GenGridHeader from "@/components/GenGridHeader.astro"
 import GenBarRails from "@/components/GenBarRails.astro"
 import GenBars from "@/components/GenBars.astro"
+import Grid from "@/components/Grid.astro"
 import {
   GENERATIONS,
   START_YEAR,
@@ -31,6 +33,7 @@ const years = Array.from(
         gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
         years={years}
       />
+      <GenSelector client:only="react" />
       <GenBarRails
         gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
         gridTemplateRows={GRID_TEMPLATE_ROWS}
@@ -44,4 +47,6 @@ const years = Array.from(
       />
     </div>
   </div>
+
+  <Grid />
 </Layout>
