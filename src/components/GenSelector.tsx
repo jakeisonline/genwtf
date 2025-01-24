@@ -14,7 +14,7 @@ export default function GenSelector() {
     const updateIntersectingHeading = () => {
       const selector = document.querySelector(".gen-selector")
       const headings = document.querySelectorAll(".grid-item")
-      const container = document.querySelector(".relative.overflow-x-scroll")
+      const container = document.querySelector("#grid-container")
 
       if (selector && container) {
         const selectorRect = selector.getBoundingClientRect()
@@ -28,12 +28,15 @@ export default function GenSelector() {
             selectorLeft <= headingRect.right
           ) {
             setIntersectingHeading(heading.textContent)
+            heading.setAttribute("data-selected", "true")
+          } else {
+            heading.setAttribute("data-selected", "false")
           }
         })
       }
     }
 
-    const container = document.querySelector(".relative.overflow-x-scroll")
+    const container = document.querySelector("#grid-container")
     container?.addEventListener("scroll", updateIntersectingHeading)
     window.addEventListener("resize", updateIntersectingHeading)
     updateIntersectingHeading()
@@ -53,26 +56,49 @@ export default function GenSelector() {
     if (!intersectingHeading) return []
     const year = parseInt(intersectingHeading, 10)
     return GENERATIONS.map((generation) => {
-      const age = year - generation.start
-      return age >= 0 ? age : "Not born yet"
+      const eldestAge = year - generation.start
+      const youngestAge = year - generation.end
+
+      if (eldestAge < 0) return null
+
+      return {
+        eldest: eldestAge,
+        youngest: youngestAge,
+      }
     })
   }
 
   const ages = calculateAges()
 
+  const stringifyAges = ({
+    eldest,
+    youngest,
+  }: {
+    eldest: number
+    youngest: number
+  }) => {
+    if (youngest === 0) return `${eldest} years old`
+    if (youngest < 0) return `${eldest} years old`
+    return `${youngest} - ${eldest} years old`
+  }
+
   return (
     <div
-      className="gen-selector top-38 fixed left-0 z-20 h-full border-l border-red-600"
+      className="gen-selector absolute z-20 mt-10 border-l border-red-600"
       style={{
         transform: `translateX(${blockWidth * nearestMiddleBlock}px)`,
       }}
     >
       <div className="flex flex-col gap-3">
-        <div className="bg-red-600 px-2">{intersectingHeading}</div>
-        <div className="flex flex-col gap-12">
-          {ages.reverse().map((age, index) => (
-            <div key={index}>{age} years old</div>
-          ))}
+        <div className="flex flex-col gap-12 pl-2">
+          {ages.reverse().map(
+            (age, index) =>
+              (age && (
+                <div key={index} className="flex flex-col text-left">
+                  <div>{stringifyAges(age)}</div>
+                </div>
+              )) || <div className="text-left">...</div>,
+          )}
         </div>
       </div>
     </div>
