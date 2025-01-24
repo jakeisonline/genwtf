@@ -5,7 +5,10 @@ const { class: className, ...props } = Astro.props
 ---
 
 <div
-  class={cn("border-r border-gray-300 mr-3 border-dotted", className)}
+  class={cn(
+    "border-r border-gray-300 mr-3 border-dotted select-none",
+    className,
+  )}
   {...props}
 >
   <slot />

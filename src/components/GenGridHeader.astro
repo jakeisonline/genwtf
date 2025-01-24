@@ -16,7 +16,7 @@ const { gridTemplateColumns, years }: Props = Astro.props
   {
     years.map((year) => (
       <GenGridHeading
-        class="grid-item data-[selected=true]:font-bold"
+        class="grid-item select-none data-[selected=true]:font-bold"
         data-year={year}
         data-selected={false}
       >

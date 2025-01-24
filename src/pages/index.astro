@@ -5,7 +5,7 @@ import GenBarRailLabels from "@/components/GenBarRailLabels.astro"
 import GenGridHeader from "@/components/GenGridHeader.astro"
 import GenBarRails from "@/components/GenBarRails.astro"
 import GenBars from "@/components/GenBars.astro"
-import Grid from "@/components/Grid.astro"
+import GridDraggable from "@/components/GridDraggable.tsx"
 import {
   GENERATIONS,
   START_YEAR,
@@ -27,7 +27,11 @@ const years = Array.from(
     They're how old?!
   </h1>
   <GenSelector client:only="react" />
-  <div id="grid-container" class="relative overflow-x-scroll">
+  <GridDraggable
+    id="grid-container"
+    className="relative overflow-x-scroll"
+    client:only="react"
+  >
     <GenBarRailLabels generations={GENERATIONS} />
 
     <div class="relative ml-6 grid h-max">
@@ -47,7 +51,5 @@ const years = Array.from(
         startYear={START_YEAR}
       />
     </div>
-  </div>
-
-  <Grid />
+  </GridDraggable>
 </Layout>
