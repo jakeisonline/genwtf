@@ -29,7 +29,7 @@ const years = Array.from(
   <GenSelector client:only="react" />
   <GridDraggable
     id="grid-container"
-    className="relative overflow-x-scroll"
+    className="relative cursor-grab overflow-x-scroll active:cursor-grabbing"
     client:only="react"
   >
     <GenBarRailLabels generations={GENERATIONS} />
