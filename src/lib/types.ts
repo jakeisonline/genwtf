@@ -2,6 +2,9 @@ export type Generation = {
   name: string
   start: number
   end: number
-  colorStart: string
-  colorStop: string
+  colors: {
+    block: string
+    rail: string
+    border: string
+  }
 }

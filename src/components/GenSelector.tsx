@@ -90,7 +90,7 @@ export default function GenSelector() {
       }}
     >
       <div className="flex flex-col gap-11 pl-2 text-xs md:gap-12 md:text-base">
-        {ages.reverse().map(
+        {ages.map(
           (age, index) =>
             (age && (
               <div key={index} className="flex flex-col text-left select-none">

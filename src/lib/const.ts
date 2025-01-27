@@ -1,59 +1,83 @@
 export const GENERATIONS = [
   {
-    name: "The Greatest Generation",
-    start: 1922,
-    end: 1927,
-    colorStart: "#A3B9D3", // Pastel Navy Blue
-    colorStop: "#B0C4DE", // Lighter Pastel Blue
-  },
-  {
-    name: "The Silent Generation",
-    start: 1928,
-    end: 1945,
-    colorStart: "#C08081", // Pastel Burgundy
-    colorStop: "#D3A4A6", // Lighter Pastel Pink
-  },
-  {
-    name: "The Baby Boomers",
-    start: 1946,
-    end: 1964,
-    colorStart: "#A8D5BA", // Pastel Forest Green
-    colorStop: "#C1E1C1", // Lighter Pastel Green
-  },
-  {
-    name: "Generation X",
-    start: 1965,
-    end: 1980,
-    colorStart: "#B0C4DE", // Pastel Slate Grey
-    colorStop: "#D3D3E3", // Lighter Pastel Grey
-  },
-  {
-    name: "Millennials",
-    start: 1981,
-    end: 1996,
-    colorStart: "#FFDAB9", // Pastel Bright Orange
-    colorStop: "#FFE4C4", // Lighter Pastel Peach
-  },
-  {
-    name: "Generation Z",
-    start: 1997,
-    end: 2012,
-    colorStart: "#D1B3FF", // Pastel Electric Purple
-    colorStop: "#E6CCFF", // Lighter Pastel Lavender
+    name: "Generation Beta",
+    start: 2023,
+    end: 2039,
+    colors: {
+      block: "#A4B2F5",
+      rail: "#EDF0FC",
+      border: "#6077EF",
+    },
   },
   {
     name: "Generation Alpha",
     start: 2013,
     end: 2022,
-    colorStart: "#B3FFFF", // Pastel Aqua Blue
-    colorStop: "#CCFFFF", // Lighter Pastel Cyan
+    colors: {
+      block: "#A2D7AF",
+      rail: "#ECF6F0",
+      border: "#6DB871",
+    },
   },
   {
-    name: "Generation Beta",
-    start: 2023,
-    end: 2039,
-    colorStart: "#C1E1C1", // Pastel Lime Green
-    colorStop: "#D8ECD8", // Lighter Pastel Mint
+    name: "Generation Z",
+    start: 1997,
+    end: 2012,
+    colors: {
+      block: "#E9C291",
+      rail: "#FBF4EA",
+      border: "#DA9343",
+    },
+  },
+  {
+    name: "Millennials",
+    start: 1981,
+    end: 1996,
+    colors: {
+      block: "#DB9F94",
+      rail: "#F9EEEC",
+      border: "#DA9343",
+    },
+  },
+  {
+    name: "Generation X",
+    start: 1965,
+    end: 1980,
+    colors: {
+      block: "#BAA0F0",
+      rail: "#F2EDFC",
+      border: "#8756E1",
+    },
+  },
+  {
+    name: "The Baby Boomers",
+    start: 1946,
+    end: 1964,
+    colors: {
+      block: "#A4B2F5",
+      rail: "#EDF0FC",
+      border: "#6077EF",
+    },
+  },
+  {
+    name: "The Silent Generation",
+    start: 1928,
+    end: 1945,
+    colors: {
+      block: "#A2D7AF",
+      rail: "#ECF6F0",
+      border: "#6DB871",
+    },
+  },
+  {
+    name: "The Greatest Generation",
+    start: 1922,
+    end: 1927,
+    colors: {
+      block: "#E9C291",
+      rail: "#FBF4EA",
+      border: "#DA9343",
+    },
   },
 ]
 

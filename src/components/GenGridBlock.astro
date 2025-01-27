@@ -12,6 +12,6 @@ const {
 
 <div
   class={cn("rounded-full mt-8 h-7 md:h-10 shadow-xs", className)}
-  style={`grid-column: ${colStart} / span ${colSpan}; grid-row: ${rowStart}; background: linear-gradient(${generation.colorStart}, ${generation.colorStop}); border: 1px solid ${generation.colorStart}`}
+  style={`grid-column: ${colStart} / span ${colSpan}; grid-row: ${rowStart}; background-color: ${generation.colors.block}; border: 1px solid ${generation.colors.border || generation.colors.block}`}
 >
 </div>
