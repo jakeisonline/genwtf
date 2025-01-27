@@ -84,29 +84,24 @@ export default function GenSelector() {
 
   return (
     <div
-      className="gen-selector absolute mt-10 border-l border-red-600"
+      className="gen-selector absolute mt-9 border-l border-red-600 md:mt-10"
       style={{
         transform: `translateX(${blockWidth * nearestMiddleBlock}px)`,
       }}
     >
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-col gap-12 pl-2">
-          {ages.reverse().map(
-            (age, index) =>
-              (age && (
-                <div
-                  key={index}
-                  className="flex flex-col text-left select-none"
-                >
-                  <div>{stringifyAges(age)}</div>
-                </div>
-              )) || (
-                <div className="text-left select-none" key={index}>
-                  ...
-                </div>
-              ),
-          )}
-        </div>
+      <div className="flex flex-col gap-11 pl-2 text-xs md:gap-12 md:text-base">
+        {ages.reverse().map(
+          (age, index) =>
+            (age && (
+              <div key={index} className="flex flex-col text-left select-none">
+                <div>{stringifyAges(age)}</div>
+              </div>
+            )) || (
+              <div className="text-left select-none" key={index}>
+                ...
+              </div>
+            ),
+        )}
       </div>
     </div>
   )

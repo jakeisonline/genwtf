@@ -12,12 +12,12 @@ const { gridTemplateColumns, gridTemplateRows, generations }: Props =
 ---
 
 <div
-  class="absolute -z-10 mt-16 grid w-max gap-y-8"
+  class="absolute -z-10 mt-15 grid w-max gap-y-8 md:mt-16"
   style={`grid-template-columns: ${gridTemplateColumns}; grid-template-rows: ${gridTemplateRows};`}
 >
   {
     generations.map((generation) => (
-      <div class="col-span-full h-10 rounded-full bg-gray-200/80" />
+      <div class="col-span-full h-7 rounded-full bg-gray-200/80 md:h-10" />
     ))
   }
 </div>

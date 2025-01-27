@@ -9,14 +9,14 @@ const { generations }: Props = Astro.props
 ---
 
 <div
-  class="sticky left-9 top-12 z-10 ml-9 flex h-0 select-none flex-col gap-14 text-left md:top-10 md:gap-12"
+  class="sticky top-7.5 left-2 z-10 ml-9 flex h-0 flex-col gap-7 text-left select-none md:top-10 md:left-9 md:gap-12"
 >
   {
     generations
       .map((generation) => (
         <div class="text-xs md:text-base">
           {generation.name}
-          <span class="text-xs text-gray-500">
+          <span class="block text-xs text-gray-500 md:inline">
             {generation.start} - {generation.end}
           </span>
         </div>
