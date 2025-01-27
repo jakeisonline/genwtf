@@ -96,12 +96,12 @@ export default function GenSelector() {
               (age && (
                 <div
                   key={index}
-                  className="flex select-none flex-col text-left"
+                  className="flex flex-col text-left select-none"
                 >
                   <div>{stringifyAges(age)}</div>
                 </div>
               )) || (
-                <div className="select-none text-left" key={index}>
+                <div className="text-left select-none" key={index}>
                   ...
                 </div>
               ),

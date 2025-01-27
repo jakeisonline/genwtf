@@ -22,7 +22,7 @@ const years = Array.from(
 
 <Layout>
   <h1
-    class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-foreground md:text-5xl lg:text-6xl"
+    class="text-foreground mb-4 text-4xl leading-none font-extrabold tracking-tight md:text-5xl lg:text-6xl"
   >
     They're how old?!
   </h1>
@@ -30,7 +30,7 @@ const years = Array.from(
   <GridDraggable
     id="grid-container"
     className="relative cursor-grab overflow-x-scroll active:cursor-grabbing"
-    client:only="react"
+    client:load
   >
     <GenBarRailLabels generations={GENERATIONS} />
 
