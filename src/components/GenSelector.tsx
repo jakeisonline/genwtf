@@ -27,7 +27,7 @@ export default function GenSelector() {
             selectorLeft >= headingRect.left &&
             selectorLeft <= headingRect.right
           ) {
-            setIntersectingHeading(heading.textContent)
+            setIntersectingHeading(heading.getAttribute("data-year"))
             heading.setAttribute("data-selected", "true")
           } else {
             heading.setAttribute("data-selected", "false")
@@ -84,11 +84,14 @@ export default function GenSelector() {
 
   return (
     <div
-      className="gen-selector absolute mt-9 border-l border-red-600 md:mt-10"
+      className="gen-selector absolute z-40 mt-9 border-l-2 border-red-600 md:mt-10"
       style={{
         transform: `translateX(${blockWidth * nearestMiddleBlock}px)`,
       }}
     >
+      <div className="absolute -top-11 -left-6.5 rounded-md bg-red-600 px-2 py-1">
+        {intersectingHeading}
+      </div>
       <div className="flex flex-col gap-11 pl-2 text-xs md:gap-12 md:text-base">
         {ages.map(
           (age, index) =>

@@ -2,14 +2,19 @@
 import { cn } from "@/lib/utils"
 
 const { class: className, ...props } = Astro.props
+
+const year = props["data-year"]
 ---
 
 <div
   class={cn(
-    "border-r border-gray-300 mr-3 border-dotted select-none text-sm md:text-base",
+    "border-l pl-2 border-gray-300 border-dotted select-none text-sm md:text-base whitespace-nowrap ",
     className,
   )}
   {...props}
 >
-  <slot />
+  {
+    // If year is divisable by 5, show year
+    year % 5 === 0 && <span class="">{year}</span>
+  }
 </div>

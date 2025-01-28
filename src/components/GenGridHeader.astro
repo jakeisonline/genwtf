@@ -10,7 +10,7 @@ const { gridTemplateColumns, years }: Props = Astro.props
 ---
 
 <div
-  class="grid-container ml-3 grid h-full w-max text-left after:absolute"
+  class="grid-container grid h-full w-max text-left after:absolute"
   style={`grid-template-columns: ${gridTemplateColumns};`}
 >
   {
@@ -19,9 +19,7 @@ const { gridTemplateColumns, years }: Props = Astro.props
         class="grid-item select-none data-[selected=true]:font-bold"
         data-year={year}
         data-selected={false}
-      >
-        {year}
-      </GenGridHeading>
+      />
     ))
   }
 </div>
