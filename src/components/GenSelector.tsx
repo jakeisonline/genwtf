@@ -84,15 +84,15 @@ export default function GenSelector() {
 
   return (
     <div
-      className="gen-selector border-foreground absolute z-40 mt-9 border-l-3 md:mt-17"
+      className="gen-selector border-foreground absolute z-40 mt-9 border-l-3 pb-16 md:mt-0"
       style={{
         transform: `translateX(${blockWidth * nearestMiddleBlock}px)`,
       }}
     >
-      <div className="bg-foreground text-background absolute -top-17.5 -left-6.5 rounded-md px-2 py-1">
+      <div className="bg-foreground text-background absolute -top-1 -left-7.5 rounded-md px-2 py-1 text-xl font-bold">
         {intersectingHeading}
       </div>
-      <div className="flex flex-col gap-11 pl-2 text-xs md:gap-12 md:text-base">
+      <div className="mt-17 flex flex-col gap-11 pl-2 text-xs md:gap-12 md:text-base">
         {ages.map(
           (age, index) =>
             (age && (
