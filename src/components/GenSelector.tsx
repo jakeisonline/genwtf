@@ -47,11 +47,6 @@ export default function GenSelector() {
     }
   }, [width])
 
-  // round up to whole number
-  const blockWidth = 99
-  const widthInBlocks = Math.floor(width / 99)
-  const nearestMiddleBlock = Math.ceil(widthInBlocks / 2)
-
   const calculateAges = () => {
     if (!intersectingHeading) return []
     const year = parseInt(intersectingHeading, 10)
@@ -83,12 +78,7 @@ export default function GenSelector() {
   }
 
   return (
-    <div
-      className="gen-selector border-foreground absolute z-40 mt-9 border-l-3 pb-16 md:mt-0"
-      style={{
-        transform: `translateX(${blockWidth * nearestMiddleBlock}px)`,
-      }}
-    >
+    <div className="gen-selector border-foreground pointer-events-none absolute left-1/2 z-40 mt-9 border-l-3 pb-16 md:left-2/3 md:mt-0 lg:left-1/2">
       <div className="bg-foreground text-background absolute -top-1 -left-7.5 rounded-md px-2 py-1 text-xl font-bold">
         {intersectingHeading}
       </div>
