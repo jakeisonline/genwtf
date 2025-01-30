@@ -84,12 +84,12 @@ export default function GenSelector() {
 
   return (
     <div
-      className="gen-selector absolute z-40 mt-9 border-l-2 border-red-600 md:mt-10"
+      className="gen-selector border-foreground absolute z-40 mt-9 border-l-3 md:mt-17"
       style={{
         transform: `translateX(${blockWidth * nearestMiddleBlock}px)`,
       }}
     >
-      <div className="absolute -top-11 -left-6.5 rounded-md bg-red-600 px-2 py-1">
+      <div className="bg-foreground text-background absolute -top-17.5 -left-6.5 rounded-md px-2 py-1">
         {intersectingHeading}
       </div>
       <div className="flex flex-col gap-11 pl-2 text-xs md:gap-12 md:text-base">

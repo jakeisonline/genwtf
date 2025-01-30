@@ -81,8 +81,8 @@ export const GENERATIONS = [
   },
 ]
 
-export const START_YEAR = 1900
-export const END_YEAR = 2039
+export const START_YEAR = 1800
+export const END_YEAR = 2300
 
-export const GRID_TEMPLATE_COLUMNS = `repeat(${END_YEAR - START_YEAR + 1}, minmax(100px, 1fr))`
+export const GRID_TEMPLATE_COLUMNS = `repeat(${END_YEAR - START_YEAR + 1}, minmax(20px, 1fr))`
 export const GRID_TEMPLATE_ROWS = `repeat(${GENERATIONS.length}, minmax(auto, 1fr))`

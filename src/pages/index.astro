@@ -26,30 +26,32 @@ const years = Array.from(
   >
     They're how old?!
   </h1>
-  <GenSelector client:only />
-  <GridDraggable
-    id="grid-container"
-    className="relative cursor-grab overflow-x-scroll active:cursor-grabbing"
-    client:load
-  >
-    <GenBarRailLabels generations={GENERATIONS} />
+  <div class="relative">
+    <GenSelector client:only />
+    <GridDraggable
+      id="grid-container"
+      className="no-scrollbar relative cursor-grab overflow-x-scroll overflow-y-hidden active:cursor-grabbing"
+      client:load
+    >
+      <GenBarRailLabels generations={GENERATIONS} />
 
-    <div class="relative ml-6 grid h-max">
-      <GenGridHeader
-        gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
-        years={years}
-      />
-      <GenBarRails
-        gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
-        gridTemplateRows={GRID_TEMPLATE_ROWS}
-        generations={GENERATIONS}
-      />
-      <GenBars
-        gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
-        gridTemplateRows={GRID_TEMPLATE_ROWS}
-        generations={GENERATIONS}
-        startYear={START_YEAR}
-      />
-    </div>
-  </GridDraggable>
+      <div class="relative ml-6 grid h-max">
+        <GenGridHeader
+          gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
+          years={years}
+        />
+        <GenBarRails
+          gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
+          gridTemplateRows={GRID_TEMPLATE_ROWS}
+          generations={GENERATIONS}
+        />
+        <GenBars
+          gridTemplateColumns={GRID_TEMPLATE_COLUMNS}
+          gridTemplateRows={GRID_TEMPLATE_ROWS}
+          generations={GENERATIONS}
+          startYear={START_YEAR}
+        />
+      </div>
+    </GridDraggable>
+  </div>
 </Layout>
