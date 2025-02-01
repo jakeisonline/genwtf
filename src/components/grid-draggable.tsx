@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils"
 import { useRef } from "react"
 import { useDraggable } from "react-use-draggable-scroll"

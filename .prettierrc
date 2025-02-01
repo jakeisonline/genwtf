@@ -9,7 +9,6 @@
   "arrowParens": "always",
   "printWidth": 80,
   "plugins": [
-    "prettier-plugin-astro",
     "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss"
   ]

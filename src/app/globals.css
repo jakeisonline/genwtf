@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@source "../src/components/GenSelector.tsx";
 
 @custom-variant dark (&:is(.dark *));
 
