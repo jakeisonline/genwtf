@@ -6,5 +6,6 @@ export type Generation = {
     block: string
     rail: string
     border: string
+    text: string
   }
 }

@@ -24,14 +24,12 @@ export function GenBars({
     >
       {generations.slice().map((generation, index) => {
         const startColspan = generation.start - startYear
-        const genColspan = generation.end - generation.start + 1
         return (
           <GenGridBlock
             key={generation.name}
             generation={generation}
             rowStart={index + 1}
             colStart={startColspan + 1}
-            colSpan={genColspan}
           />
         )
       })}

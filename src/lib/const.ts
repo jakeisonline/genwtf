@@ -7,6 +7,7 @@ export const GENERATIONS = [
       block: "#A4B2F5",
       rail: "#EDF0FC",
       border: "#6077EF",
+      text: "#18277F",
     },
   },
   {
@@ -17,6 +18,7 @@ export const GENERATIONS = [
       block: "#A2D7AF",
       rail: "#ECF6F0",
       border: "#6DB871",
+      text: "#015E17",
     },
   },
   {
@@ -27,6 +29,7 @@ export const GENERATIONS = [
       block: "#E9C291",
       rail: "#FBF4EA",
       border: "#DA9343",
+      text: "#8B5519",
     },
   },
   {
@@ -37,6 +40,7 @@ export const GENERATIONS = [
       block: "#DB9F94",
       rail: "#F9EEEC",
       border: "#DA9343",
+      text: "#742719",
     },
   },
   {
@@ -47,6 +51,7 @@ export const GENERATIONS = [
       block: "#BAA0F0",
       rail: "#F2EDFC",
       border: "#8756E1",
+      text: "#3D1882",
     },
   },
   {
@@ -57,6 +62,7 @@ export const GENERATIONS = [
       block: "#A4B2F5",
       rail: "#EDF0FC",
       border: "#6077EF",
+      text: "#18277F",
     },
   },
   {
@@ -67,6 +73,7 @@ export const GENERATIONS = [
       block: "#A2D7AF",
       rail: "#ECF6F0",
       border: "#6DB871",
+      text: "#015E17",
     },
   },
   {
@@ -77,7 +84,47 @@ export const GENERATIONS = [
       block: "#E9C291",
       rail: "#FBF4EA",
       border: "#DA9343",
+      text: "#8B5519",
     },
+  },
+]
+
+export const AGE_GROUPS = [
+  {
+    name: "Baby",
+    start: 0,
+    end: 2,
+    marker: "👶",
+  },
+  {
+    name: "Child",
+    start: 3,
+    end: 12,
+    marker: "👧",
+  },
+  {
+    name: "Teen",
+    start: 13,
+    end: 19,
+    marker: "👩",
+  },
+  {
+    name: "Young Adult",
+    start: 20,
+    end: 40,
+    marker: "👱‍♀️",
+  },
+  {
+    name: "Middle-Aged Adult",
+    start: 41,
+    end: 64,
+    marker: "👩‍🦳",
+  },
+  {
+    name: "Senior",
+    start: 65,
+    end: 85,
+    marker: "👵",
   },
 ]
 
