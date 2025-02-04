@@ -1,12 +1,16 @@
+"use client"
+
 import { AGE_GROUPS } from "@/lib/const"
 import { Generation } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import { useLayoutEffect, useRef } from "react"
 
 interface Props {
   generation: Generation
   rowStart: number
   colStart: number
   className?: string
+  year: number
 }
 
 export function GenGridBlock({
@@ -14,8 +18,27 @@ export function GenGridBlock({
   rowStart,
   colStart,
   className,
+  year,
 }: Props) {
+  const blockRef = useRef<HTMLDivElement>(null)
   let nextAgeGroupColStart = colStart
+
+  useLayoutEffect(() => {
+    if (year === new Date().getFullYear() && blockRef.current) {
+      const element = blockRef.current
+      const parent = element.parentElement
+      if (parent) {
+        const elementRect = element.getBoundingClientRect()
+        const parentRect = parent.getBoundingClientRect()
+        const scrollLeft =
+          elementRect.left -
+          parentRect.left +
+          elementRect.width / 2 -
+          parentRect.width / 2
+        parent.scrollLeft = scrollLeft
+      }
+    }
+  }, [year])
 
   return (
     <>
@@ -29,6 +52,8 @@ export function GenGridBlock({
         return (
           <div
             key={ageGroup.name}
+            data-year={year}
+            ref={blockRef}
             className={cn(
               "pointer-events-none mt-8 flex h-7 items-center space-x-2 px-4 shadow-xs select-none md:h-10",
               currentAgeGroupColStart === colStart

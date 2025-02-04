@@ -30,6 +30,7 @@ export function GenBars({
             generation={generation}
             rowStart={index + 1}
             colStart={startColspan + 1}
+            year={generation.start}
           />
         )
       })}
