@@ -72,8 +72,7 @@ export default function GenSelector() {
     eldest: number
     youngest: number
   }) => {
-    if (youngest === 0) return `${eldest} years old`
-    if (youngest < 0) return `${eldest} years old`
+    if (youngest <= 0) return `${eldest} years old`
     return `${youngest} - ${eldest} years old`
   }
 
