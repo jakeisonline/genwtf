@@ -71,19 +71,8 @@ export function GenGridBlock({
               color: generation.colors.text || "inherit",
             }}
           >
-            {ageGroup.name === "Baby" && (
-              <span className="text-lg">{ageGroup.marker}</span>
-            )}
-            <div
-              className={cn(
-                "flex flex-col items-start text-xs",
-                ageGroup.name === "Baby" && "sr-only",
-              )}
-            >
+            <div className={cn("flex flex-col items-start text-xs")}>
               <span className="text-xs">{ageGroup.name}</span>
-              <span className="text-xs">
-                {ageGroup.start} - {ageGroup.end}
-              </span>
             </div>
           </div>
         )
