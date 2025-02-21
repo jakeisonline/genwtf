@@ -91,7 +91,7 @@ export default function GenSelector() {
               </div>
             )) || (
               <div className="text-left select-none" key={index}>
-                ...
+                ⏱️
               </div>
             ),
         )}
